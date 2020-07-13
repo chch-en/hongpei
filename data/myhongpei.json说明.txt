@@ -1,0 +1,15 @@
+首页 （getIndexByWeb）// 如：元气早餐  网红爆款等等。。
+
+1）： getNewbieGuide  //  技巧百科
+
+2) :   getIndexByWeb   // 视频学堂
+
+3）： getCourse    //新手教程 + 课程介绍   （getSeriesCourse）// 课程目录
+
+4）：getRecommend //热门分类（推荐页） + （classifyget）// 分类页（如：蛋糕，面包类）
+
+6 :   getNew  //烘培圈 （最新）  
+
+7） ： getByLimit // （烘培圈 如： 夏季冷饮甜点等。。）  
+
+8）：getMasterNew//（烘培圈 达人）
