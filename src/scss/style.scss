@@ -1,0 +1,27 @@
+@import "./mixin.scss";
+@import "./config.scss";
+body {
+  background: #3fc;
+}
+.active {
+  color: red;
+  font-size: 60px;
+  font-weight: 900;
+}
+nav {
+  display: flex;
+  justify-content: space-around;
+}
+.aaa {
+  color: $colorA;
+  background: red;
+  width: 400px;
+  min-height: 30px;
+  @include flex($hov: space-between, $col: center);
+  div {
+    width: 20px;
+    height: 20px;
+    background: green;
+    border: 1px solid #3fc;
+  }
+}

@@ -1,0 +1,26 @@
+/*
+  样式规范表
+*/
+$min-width: 1226px; //容器安全区域宽度
+
+// 常规字体大小设置
+$fontA: 22px; //大标题
+$fontB: 19px; //课程标题
+$fontC: 28px; //
+$fontD: 26px; //产品站副标题
+$fontE: 24px;
+$fontF: 13px; //作品作者
+$fontG: 20px; //用在较为重要的文字（id）、操作按钮
+$fontH: 18px; //用于大多数文字
+$fontI: 16px; //用于辅助性文字
+$fontJ: 14px; //用于一般文字
+$fontK: 12px; //导航 发布时间 简介
+
+// 常规配色设置
+$colorA: #e98b71 !default; //用于需要突出和强调的文字、按钮和icon 修改 提问
+$colorC: #4a4945 !default; //用于普通段落信息 引导词
+$colorD: #999999 !default; //用于导航未被选中，发布时间，搜索框失焦，除昵称外个人信息及查看全部
+$colorE: #4a4945 !default; //烘培圈 小窝 常规小标题
+$colorF: #313131 !default; //页面内大标题
+$colorG: #4a4945 !default; //多行文本标题 以及产品描述
+$colorH: #e5e5e5 !default; //用于上下模块分割线
