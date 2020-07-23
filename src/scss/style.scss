@@ -1,17 +1,15 @@
 @import "./mixin.scss";
 @import "./config.scss";
 body {
-  background: #3fc;
+  background: $colorI;
 }
 .active {
   color: red;
-  font-size: 60px;
-  font-weight: 900;
 }
-nav {
-  display: flex;
-  justify-content: space-around;
-}
+// nav {
+//   display: flex;
+//   justify-content: space-around;
+// }
 .aaa {
   color: $colorA;
   background: red;

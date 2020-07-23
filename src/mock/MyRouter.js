@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import { Route } from 'react-router'
+import { BrowserRouter as Router, Route, Switch, Redirect } from "react-router-dom";
+
 
 export default class MyRouter extends Component {
     constructor(props) {
@@ -10,13 +11,18 @@ export default class MyRouter extends Component {
     render() {
         return (
             <div>
-                {
-                    this.props.router.map(v => (
-                        <Route key={v.path} {...v}>
+                <Switch>
+                    {
 
-                        </Route>
-                    ))
-                }
+                        this.props.router.map(v => (
+                            <Route key={v.path} {...v}>
+                            </Route>
+                        ))
+                    }
+
+                </Switch>
+
+
             </div>
         )
     }

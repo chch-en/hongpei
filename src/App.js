@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import router from "./Router"
-import "./scss/style.scss"
+import "./scss/reset.scss"
 function App() {
   return (
     <div className="App">
@@ -25,4 +25,5 @@ function App() {
     </div >
   )
 }
+// withrouter
 export default App
