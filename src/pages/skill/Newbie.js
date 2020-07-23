@@ -1,5 +1,7 @@
 import React, { Component, } from 'react';
 import { baike_detail, baike_dd, baike_lun, aa } from "../../api/index"
+import { withRouter} from "react-router-dom"
+
 import skill from "../../scss/skill.module.scss"
 import { BlockLoading } from 'zent';
 class detail extends Component {
@@ -11,20 +13,22 @@ class detail extends Component {
       step: '',
       tu: [],
       xia: [],
-      loading: false
+      loading: true
     }
   }
 
   componentDidMount () {
-
+    
     let id = this.props.match.params.id
 
     // 获取 视频数据 
     baike_detail(id).then((res) => {
-      console.log(res)
+      // console.log(res)
       this.setState({
+        loading: false,
         list: res.data.data,
-        step: res.data.data.introduces[0].introduce
+        step: res.data.data.introduces[0].introduce,
+
       })
 
     })
@@ -50,32 +54,28 @@ class detail extends Component {
   }
 
 
-
-
   render () {
-    // console.log(this.props)
     // 解构赋值 轮播图数组 视频数据  制作步骤数据
-    let { list, step, tu, xia,loading } = this.state
+    let { list, step, tu, xia, loading } = this.state
+    console.log(list)
+
     // console.log(xia)
-    loading = true
     return (
       //视频部分
 
-      <BlockLoading loading show={loading} iconSize={64} iconText="加载中" >
-
+      <BlockLoading loading={loading} iconSize={64} iconText="加载中" height="800px">
+      
         <div className={skill.bie}>
 
           {
-            list.title ? <video src={list.step[0].videoUrl} controls="controls" autoPlay="autoPlay" loop="loop" poster={list.step[0].sDVideoUrl} width="100%" height="100%">
+            list.title ? <video src={list.step[0].videoUrl} preload="auto" controls="controls" autoPlay={true} loop="loop" poster={list.image} width="100%" height="100%">
             </video> : ""
-
           }
           <h2> {list.title} </h2>
 
           {/* 过程部分 */}
           {/* 将字符串标签转化为html标签 */}
           <p className={skill.xiangqing} dangerouslySetInnerHTML={{ __html: step }} />
-
 
           {/* 下面推荐课程部分 */}
           <h2 className={skill.tuijian}>   <span>推荐课程</span>  <a onClick={() => {
@@ -102,4 +102,4 @@ class detail extends Component {
 
   }
 }
-export default detail;
+export default withRouter(detail);

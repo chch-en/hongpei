@@ -1,19 +1,13 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import router from "./Router"
-<<<<<<< HEAD
-import "./scss/style.scss"
+// import "./scss/style.scss"
 import "./scss/reset.scss"
 import "zent/css/index.css"
 import 'swiper/swiper-bundle.min.css'
 
-
-function App () {
-
-=======
-import "./scss/reset.scss"
 function App() {
->>>>>>> 4beb30f676a2b97fd5cf92054931e8f2aa062ebb
+
   return (
     <div className="App">
       <Router>
@@ -27,7 +21,6 @@ function App() {
               >
               </Route>
             ))
-
           }
         </Switch>
 
@@ -36,4 +29,4 @@ function App() {
   )
 }
 // withrouter
-export default App
+export default App;
