@@ -1,41 +1,78 @@
 import React, { Component } from 'react'
-import { NavLink } from "react-router-dom"
+import { NavLink, withRouter } from "react-router-dom"
 import MyRouter from "../mock/MyRouter"
-
-export default class Index extends Component {
+import Head from "../scss/Head.module.scss"
+import Axios from 'axios'
+class Index extends Component {
     constructor(props) {
         super(props)
-        this.state = {}
+
     }
     componentDidMount() {
         const { childrenaa } = this.props
-        console.log(this.props, childrenaa)
+
     }
+
+
     render() {
         const { childrenaa } = this.props
 
+
+
         return (
             <div>
-                <nav>
-                    <NavLink
-                        to={"/"}
-                        exact
-                    >{"学烘培"}</NavLink>
+                {/* 下方导航点击变色未做 */}
+                <div className={Head.Footer}>
+                    <ul>
+                        <li onClick={() => {
+                            this.props.history.push("/")
+                        }}>
+                            <div className={Head.FootImg}>
+                                <img src="https://image.hongbeibang.com/FhngZoiK_s7Zw4K3DxLogRfqoO06?50X50&imageView2/1/w/50/h/50" alt="" />
+                            </div>
+                            <div className={Head.FootTxt}>
+                                <span>学烘培</span>
+                            </div>
+                        </li>
+                        <li onClick={() => {
+                            this.props.history.push("/show")
+                        }}>
+                            <div className={Head.FootImg}>
+                                <img src="https://image.hongbeibang.com/Fkpdn7F9EWxvNeSS8M7V4_xbRPlf?50X50&imageView2/1/w/50/h/50" alt="" />
+                            </div>
+                            <div className={Head.FootTxt}>
+                                <span>烘培圈</span>
+                            </div>
+                        </li>
+                        <li onClick={() => {
+                            this.props.history.push("/questionAndAnswer")
+                        }}>
+                            <div className={Head.FootImg}>
+                                <img src="https://image.hongbeibang.com/Flm_lYHJQA56h0VyhdRhQ1i5iO06?50X50&imageView2/1/w/50/h/50" alt="" />
+                            </div>
+                            <div className={Head.FootTxt}>
+                                <span>问答</span>
+                            </div>
+                        </li>
+                        <li onClick={() => {
+                            this.props.history.push("/my")
+                        }}>
+                            <div className={Head.FootImg}>
+                                <img src="https://image.hongbeibang.com/FrYeKj0MohOJQuNzUgCugg90cHCS?50X50&imageView2/1/w/50/h/50" alt="" />
+                            </div>
+                            <div className={Head.FootTxt}>
+                                <span>小窝</span>
+                            </div>
+                        </li>
 
-                    <NavLink
-                        to={"/show"}
-                    >{"烘培圈"}</NavLink>
+                    </ul>
+                </div>
 
-                    <NavLink
-                        to={"/questionAndAnswer"}
-                    >{"问答"}</NavLink>
-                    <NavLink
-                        to={"/my"}
-                    >{"小窝"}</NavLink>
-                </nav>
 
                 <MyRouter router={childrenaa}></MyRouter>
             </div>
         )
     }
 }
+
+export default withRouter(Index)

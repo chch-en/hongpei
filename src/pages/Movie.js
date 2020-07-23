@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 
-export default class Classify extends Component {
+export default class Movie extends Component {
     render() {
         return (
             <div>
-                aaaaaaaaaa
+                movie
             </div>
         )
     }
