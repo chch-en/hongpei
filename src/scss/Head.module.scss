@@ -227,9 +227,10 @@
   }
 }
 .CopyRight {
-  min-width: 400px;
+  width: 100%;
   min-height: 10px;
   padding: 10px 20px;
+  box-sizing: border-box;
   background: #f1eeeefd;
   line-height: 22px;
   a {
@@ -240,7 +241,7 @@
   }
 }
 .Footer {
-  min-width: 10px;
+
   width: 100%;
   ul {
     list-style-type: none;

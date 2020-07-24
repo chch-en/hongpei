@@ -68,7 +68,6 @@ export default [
   {
     path: "/",
     component: Index,
-
     childrens: [
 
       {

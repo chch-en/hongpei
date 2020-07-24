@@ -2,6 +2,11 @@
 .content {
   font-size: 13px;
   margin: 0 auto;
+
+}
+
+.content .type_mian ul{
+  margin-top: 40px;
 }
 .content .aLi {
   margin: 0 20px;
@@ -52,8 +57,11 @@
   cursor:pointer;
 }
 
+
+// 固定的头部 skill
 .head {
   height: 50px;
+  background-color: #fff;
   width: 100%;
   position: fixed;
   top: 0;
@@ -66,6 +74,9 @@
   }
 }
 
+
+
+// newpei 
 // 推荐课程图部分
 .aa {
   position: relative;
@@ -110,7 +121,6 @@
   -webkit-line-clamp: 2;
   overflow: hidden;
 }
-
 // 推荐课成
 .tuijian {
   display: flex;
