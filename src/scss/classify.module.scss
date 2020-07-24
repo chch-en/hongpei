@@ -1,0 +1,70 @@
+*{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-decoration: none;
+}
+//classify路由样式
+.content{
+    display: flex;
+    justify-content: space-between;
+    .ul_left{
+        width: 25%;
+        font-size: 14px;
+        height: 922px;
+        background: #F5F7F9;
+        margin-bottom: 0;
+
+        li{
+            line-height: 50px;
+            width: 100%;
+            text-align: center;
+        // background: #F5F7F9;
+
+            
+        }
+        .active{
+            background: #FFFFFF;
+            border-left: 3px solid #E98B71;
+        }
+    }
+    .right{
+        width: 80%;
+
+        h2{
+            font-size: 12px;
+            font-weight: bold;
+            line-height: 22px;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            padding-left: 15px;
+            text-align: left;
+        }
+        .right_ul{  
+            display: flex;
+            flex-wrap: wrap;
+            padding-left: 15px;
+            padding-right: 15px;
+            .right_li{
+                width: 30%;
+                margin-right: 8px;
+            div{
+                width: 100%;
+
+                img{
+                    width: 100%;
+                    border-radius: 5px;
+                }
+            }
+            p{
+                font-size: 12px;
+                margin-top: 5px;
+                margin-bottom: 8px;
+            }
+        }
+}
+    }
+}
+
+
+
