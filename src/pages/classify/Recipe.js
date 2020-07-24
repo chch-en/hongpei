@@ -14,12 +14,18 @@ class Recipe extends Component {
             list_dish: [],//作业数组
             list_recommend: [],//食谱推荐数组
             quantity: 1,//数量，接口的参数，实时修改请求后台
-            list_authorcook: []//定义作者食谱
+            list_authorcook: [],//定义作者食谱
+            list_lesson: [],//推荐课程数据
+            pageIndex: 0,//评论接口发送请求需要的参数
+            pageSize: 10,
+            list_comment: [],//评论数据列表
+            comment_count: 0//评论数量
         }
     }
     componentDidMount() {
         this.get_Detail()
         this.get_lesson()
+        this.get_comment()
     }
     //页面跳转拿到详情数据
     get_Detail = () => {
@@ -34,7 +40,7 @@ class Recipe extends Component {
                     list_recommend: res.data.data.recipe.recipe
 
                 }, () => {
-                    // console.log(this.state.list_detail)
+                    console.log(this.state.list_detail)
                 })
             })
     }
@@ -56,8 +62,26 @@ class Recipe extends Component {
     //推荐课程接口数据
     get_lesson = () => {
         axios.get("https://api.hongbeibang.com/recommend/getRandContent?type=3&pageSize=10")
+
             .then((res) => {
-                console.log(res)
+                this.setState({
+                    list_lesson: res.data.data.data
+                })
+                // console.log(res.data.data.data)
+            })
+    }
+    //评论数据接口
+    get_comment = () => {
+
+        axios.get(`https://api.hongbeibang.com/comment/getFloor?pageIndex=${this.state.pageIndex}&pageSize=${this.state.pageSize}&contentId=${this.props.match.params.id}`)
+            .then((res) => {
+                this.setState({
+                    list_comment: res.data.data.data,
+                    comment_count: res.data.data.count
+                }, () => {
+                    // console.log(res)
+
+                })
             })
     }
     //修改页面数据
@@ -91,7 +115,8 @@ class Recipe extends Component {
     }
 
     render() {
-        let { list_detail, list_foods, list_step, list_dish, list_recommend, list_authorcook, quantity } = this.state
+        let { list_detail, list_foods, list_step, list_dish,
+            list_recommend, list_authorcook, list_lesson, list_comment, comment_count, quantity } = this.state
         return (
             <Fragment>
                 <div className={recipe.imgbox}>
@@ -218,10 +243,55 @@ class Recipe extends Component {
                             <span className={recipe.span1}>查看全部</span>
                         </h2>
                         <div className={recipe.lesson}>
-                            <img src="" alt="" />
+                            {list_lesson.map((item, index) => {
+                                return <div key={index} className={recipe.lesson_detail}>
+                                    <img src={item.coverImage} alt="" />
+                                    <div className={recipe.study}>{item.buyNum > 1000 ? "1000+" : item.buyNum}在学</div>
+                                    <p>{item.coverTitle}</p>
+                                </div>
+                            })}
 
                         </div>
 
+                    </div>
+                    <div className={recipe.comment}>
+                        <h2>
+                            <span className={recipe.worktitle}>帮友评论</span>
+                        </h2>
+                        <div className={recipe.number}>
+                            <div>点赞数：{list_detail.likeNum}</div>
+                            <div>打赏数：{list_detail.rewardNum}</div>
+                            <div>评论数：{comment_count}</div>
+                        </div>
+                        <div className={recipe.comment_text}>
+                            {list_comment.map((item, index) => {
+                                return <div key={index} className={recipe.comment_item}>
+                                    <div className={recipe.imgbox_left}>
+                                        <img src={item.clientImage} alt="" />
+                                    </div>
+                                    <div className={recipe.div_right}>
+                                        <div className={recipe.name1} >{item.clientName}</div>
+                                        <div className={recipe.time1}>{item.createTime}</div>
+                                        <p> {item.coverSummary}</p>
+                                        <div className={item.comments.data.length ? recipe.reply : recipe.reply1}>
+                                            {
+                                                item.comments.data.map((item1, index1) => {
+                                                    return (
+                                                        <div key={index1} className={item.comments.data ? recipe.reply_item : recipe.reply_item1}>
+                                                            <span>{item1.clientName}</span>回复<span>{item1.commentClientName}</span>:{item1.coverSummary}
+                                                        </div>
+                                                    )
+                                                })
+                                            }
+                                        </div>
+                                    </div>
+
+
+
+                                </div>
+                            })}
+
+                        </div>
                     </div>
 
                 </div>

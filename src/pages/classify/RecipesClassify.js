@@ -69,7 +69,6 @@ class Recipes_classify extends Component {
     render() {
         let { list, show_list, is_active } = this.state
 
-        console.log(this)
 
         return (
             <Fragment>
