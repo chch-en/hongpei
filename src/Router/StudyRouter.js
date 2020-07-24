@@ -6,7 +6,7 @@ import School from "../pages/School"
 
 export default [
     {
-        path: "/skill",
+        path: "/Skill",
         component: Skill
     },
     {
@@ -18,7 +18,7 @@ export default [
         component: Novice,
     },
     {
-        path: "/School",
+        path: "/school",
         component: School,
     },
 ]
