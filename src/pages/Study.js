@@ -1,19 +1,21 @@
 import React, { Component } from 'react'
 import { NavLink } from "react-router-dom"
 import MyRouter from "../mock/MyRouter"
-// import router from "../Router/StudyRouter"
 import Head from "../scss/Head.module.scss"
 import Axios from 'axios'
+
 export default class Index extends Component {
     constructor(props) {
         super(props)
         this.state = {
             goodsList: [],
             lessonList: [],
-            arr: []
+            arr: [],
+            loading:true,
         }
     }
     componentDidMount() {
+
         this.get_Recommond()
         this.get_Seemore()
 
@@ -21,6 +23,7 @@ export default class Index extends Component {
     get_Recommond = () => {
         Axios.get("https://api.hongbeibang.com/recommend/getRandContent?type=3&pageSize=10").then((res) => {
             this.setState({
+               
                 goodsList: res.data.data.data
             })
         })
@@ -29,15 +32,17 @@ export default class Index extends Component {
         Axios.get("https://api.hongbeibang.com/education/getIndexByWeb?").then((res) => {
             let arr = res.data.data.category.splice(1, 9)
             this.setState({
-                lessonList: arr
+                lessonList: arr,
+                loading:false,
             })
         })
     }
     render() {
-        let { goodsList, lessonList } = this.state
-
+      
+        let { goodsList, lessonList ,loading} = this.state
 
         return (
+          loading ? <img src="/lan.gif" alt="" className="lan" /> :
             <div>
 
                 <div className={Head.Header}>

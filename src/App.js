@@ -1,32 +1,36 @@
-import React from 'react';
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import React,{Component} from 'react';
+import { Route, Switch ,withRouter} from "react-router-dom";
 import router from "./Router"
-// import "./scss/style.scss"
 import "./scss/reset.scss"
-import "zent/css/index.css"
-import 'swiper/swiper-bundle.min.css'
+import "antd/dist/antd.css"
 
-function App() {
+class App extends Component {
+  constructor(props, context) {
+    super(props, context)
+    this.props.history.listen((props) => {
+      console.log(props)
+    })
+  }
+  render () {
+    return (
+      <div className="App">
 
-  return (
-    <div className="App">
-      <Router>
-        <Switch>
-          {
-            router.map(v => (
-              <Route
-                path={v.path}
-                key={v.path}
-                render={() => <v.component childrenaa={v.childrens} />}
-              >
-              </Route>
-            ))
-          }
-        </Switch>
+          <Switch>
+            {
+              router.map(v => (
+                <Route
+                  path={v.path}
+                  key={v.path}
+                  render={() => <v.component childrenaa={v.childrens} />}>
+                </Route>
+              ))
+            } 
 
-      </Router>
-    </div >
-  )
+          </Switch>
+
+      </div >
+    )
+  }
 }
-// withrouter
-export default App;
+
+export default withRouter(App);

@@ -2,7 +2,6 @@ import Login from "../pages/Login";
 import Index from "../pages/Index";
 import Study from "../pages/Study";
 import Show from "../pages/Show";
-import Swiper from "../pages/Swiper";
 import QuestionAndAnswer from "../pages/QuestionAndAnswer";
 import My from "../pages/My";
 import School from "../pages/School"
@@ -14,7 +13,8 @@ import CourseOne from "../componets/CourseOne"
 import CourseTwo from "../componets/CourseTwo"
 import CourseThree from "../componets/CourseThree"
 import Newbie from "../pages/skill/Newbie"
-
+import Register from "../pages/Register"
+import Demo from "../pages/Demo"
 
 export default [
   {
@@ -28,6 +28,10 @@ export default [
   {
     path: "/newbie/:id",
     component: Newbie,
+  },
+  {
+    path: "/demo",
+    component: Demo
   },
   {
     path: "/classify",
@@ -60,6 +64,10 @@ export default [
     component: Login
   },
   {
+    path: "/register",
+    component: Register
+  },
+  {
     path: "/",
     component: Index,
     childrens: [
@@ -77,7 +85,7 @@ export default [
         path: "/my",
         exact: true,
         component: My,
-      },     
+      },
       {
         path: "/",
 

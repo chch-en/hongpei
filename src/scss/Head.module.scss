@@ -1,5 +1,5 @@
-@import "./mixin.scss";
-@import "./config.scss";
+@import './mixin.scss';
+@import './config.scss';
 .Header {
   background: $colorI;
   height: 44px;
@@ -10,7 +10,7 @@
   margin: 0 auto;
   max-width: 600px;
   box-sizing: border-box;
-  margin-top: 4.5px;
+
   .small {
     width: 27px;
     height: 27px;
@@ -241,7 +241,6 @@
   }
 }
 .Footer {
-
   width: 100%;
   ul {
     list-style-type: none;

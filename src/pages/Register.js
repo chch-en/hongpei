@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { withRouter } from "react-router-dom"
 import { Form, Input, Button, Checkbox, notification } from 'antd';
-import { login } from "../api/index"
+import { register } from "../api/index"
 import aaa from "../scss/login.module.scss"
 
 const layout = {
@@ -15,27 +15,30 @@ const tailLayout = {
 const openNotification = () => {
   notification.open({
     message: "恭喜你",
-    duration: 2,
-    description: "登录成功,跳转至首页 ",
+    description: "注册成功,2秒后跳转至登录页面 ",
     onclick: () => {
       console.log("notification")
     }
   })
 }
 
-class Login extends Component {
-  onFinish = values => {       //value 是输入的用户名密码  一个对象
-    login(values).then((res) => {
-      console.log(res, "成功")  // 成功返回信息  失败返回空 
-      if (res.data.length > 0) {
-        openNotification()
-        this.props.history.replace("/")
-        localStorage.setItem("user_id", res.data[0].id)
+class Register extends Component {
+  constructor(){
+    super()
+
+  }
+  onFinish = values => {
+    console.log(values)
+    register(values).then((res) => {
+      if (typeof(res)=== "string") {
+        alert(res)
       } else {
-        alert
-          ("登陆失败")
+        openNotification()
+        setTimeout(() => { this.props.history.replace("/login") }, 2000)
       }
     })
+    // console.log('Success:', values);  //获取输入的信息   点击之后获取
+
   };
 
   onFinishFailed = errorInfo => {
@@ -43,9 +46,9 @@ class Login extends Component {
   };
 
   render () {
-    console.log(this.props)
     return (
-      <div className={aaa.body}>
+
+      <div className={aaa.bogy}>
         <div className={aaa.login}>
           <Form
             className="form"
@@ -58,8 +61,7 @@ class Login extends Component {
             <Form.Item
               label="Username"
               name="username"
-              rules={[{ required: true, message: 'Please input your username!' }]}
-            >
+              rules={[{ required: true, message: 'Please input your username!' }]} >
               <Input />
             </Form.Item>
 
@@ -69,23 +71,17 @@ class Login extends Component {
               rules={[{ required: true, message: 'Please input your password!' }]}
             >
               <Input.Password />
-            </Form.Item>
+            </Form.Item >
 
-            <Button type="primary" htmlType="submit" >
-              登录
+              <Button type="primary" htmlType="submit" >
+                注册
           </Button>
+
           </Form>
-
-          <a onClick={() => {
-            this.props.history.push("/register")
-          }}>
-            注册
-         </a>
         </div>
-
       </div>
     );
   }
 }
 
-export default withRouter(Login);
+export default withRouter(Register);
