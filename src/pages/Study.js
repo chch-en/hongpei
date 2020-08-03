@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import { NavLink } from "react-router-dom"
-import MyRouter from "../mock/MyRouter"
+// import { NavLink } from "react-router-dom"
+
 import Head from "../scss/Head.module.scss"
 import Axios from 'axios'
 

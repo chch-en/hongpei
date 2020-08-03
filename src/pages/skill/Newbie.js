@@ -1,8 +1,8 @@
 import React, { Component, } from 'react';
-import { baike_detail, baike_dd, baike_lun } from "../../api/index"
-import { withRouter} from "react-router-dom"
+import { baike_detail,  baike_lun } from "../../api/index"
+import { withRouter } from "react-router-dom"
 import skill from "../../scss/skill.module.scss"
-// import { BlockLoading } from 'zent';
+
 class detail extends Component {
   constructor() {
     super()
@@ -18,10 +18,10 @@ class detail extends Component {
   componentDidMount () {
 
     let id = this.props.match.params.id
-
+    console.log(this.props)
     // 获取 视频数据 
     baike_detail(id).then((res) => {
-      // console.log(res)
+      console.log(res)
       this.setState({
         list: res.data.data,
         step: res.data.data.introduces[0].introduce,
@@ -30,19 +30,10 @@ class detail extends Component {
 
     // 获取 推荐课程 数据
     baike_lun().then((res) => {
-      // console.log(res)
+      console.log(res)
       this.setState({
         loading: false,
         tu: res.data.data.data
-      })
-    })
-
-    // 获取 推荐课程 数据
-    baike_dd().then((res) => {
-      // console.log(res)
-      this.setState({
-        xia: res.data.data.category[0],
-        // xia_a:res.data.data
       })
     })
   }
@@ -52,12 +43,10 @@ class detail extends Component {
     let { list, step, tu, loading } = this.state
     // console.log(list)
 
-    // console.log(xia)
     return (
       //视频部分
 
-      // <BlockLoading loading={loading} iconSize={64} iconText="加载中" height="800px">
-        loading ?<img src="/lan.gif" alt="" className="lan" /> :
+      loading ? <img src="/lan.gif" alt="" className="lan" /> :
         <div className={skill.bie}>
           {
             list.title ? <video src={list.step[0].videoUrl} preload="auto" controls="controls" autoPlay={true} loop="loop" poster={list.image} width="100%" height="100%">
@@ -88,9 +77,8 @@ class detail extends Component {
             </div>
           </div>
         </div>
-
     )
-
   }
 }
+
 export default withRouter(detail);

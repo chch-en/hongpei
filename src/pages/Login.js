@@ -3,11 +3,13 @@ import { withRouter } from "react-router-dom"
 import { Form, Input, Button, Checkbox, notification } from 'antd';
 import { login } from "../api/index"
 import aaa from "../scss/login.module.scss"
+import Top from "../componets/Top"
 
 const layout = {
   labelCol: { span: 8 },
   wrapperCol: { span: 16 },
 };
+
 const tailLayout = {
   wrapperCol: { offset: 8, span: 16 },
 };
@@ -26,14 +28,15 @@ const openNotification = () => {
 class Login extends Component {
   onFinish = values => {       //value 是输入的用户名密码  一个对象
     login(values).then((res) => {
+      console.log(values, "values")
       console.log(res, "成功")  // 成功返回信息  失败返回空 
-      if (res.data.length > 0) {
+      if (res.data.message = "操作成功") {
         openNotification()
         this.props.history.replace("/")
-        localStorage.setItem("user_id", res.data[0].id)
+        localStorage.setItem("user_id", "登录")
       } else {
         alert
-          ("登陆失败")
+          ("登陆失败,请确认你的用户名和密码输入正确")
       }
     })
   };
@@ -43,9 +46,10 @@ class Login extends Component {
   };
 
   render () {
-    console.log(this.props)
+    // console.log(this.props)  
     return (
       <div className={aaa.body}>
+        <Top {...this.props} />
         <div className={aaa.login}>
           <Form
             className="form"
@@ -84,8 +88,8 @@ class Login extends Component {
         </div>
 
       </div>
-    );
+    )
   }
 }
+export default withRouter(Login)
 
-export default withRouter(Login);

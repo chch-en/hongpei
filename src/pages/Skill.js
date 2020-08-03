@@ -3,6 +3,7 @@ import React, { Component } from 'react'
 import { withRouter} from "react-router-dom"
 import skill from "../scss/skill.module.scss"
 import { baike } from "../api"
+import Top from "../componets/Top"
 export default withRouter(class Skill extends Component {
   constructor() {
     super()
@@ -26,18 +27,19 @@ export default withRouter(class Skill extends Component {
     this.props.history.push(`/newbie/${id}`) 
   }
   render () {
-    // console.log(this.props)
+    console.log(this.props)
     let list = this.state.list.slice(0, 8)
     // console.log(list)
     return (
 
       <div className={skill.content}>
-        <div className={skill.head}>
+        {/* <div className={skill.head}>
           <img src="https://image.hongbeibang.com/FoTuxKG5pqYKuAsT8BjrflkAxEpj?48X48&imageView2/1/w/48/h/48" alt="" onClick={()=>{
             this.props.history.push("/")
 
           }}/>
-        </div>
+        </div> */}
+        <Top {...this.props}/>
         <div className={skill.type_mian}>
           <ul>
 

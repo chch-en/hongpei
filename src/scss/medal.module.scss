@@ -1,0 +1,135 @@
+@import './mixin.scss';
+@import './config.scss';
+//头部样式
+.nav {
+  img {
+    float: left;
+    @include wH($w: 27px, $h: 27px);
+    margin-top: 6px;
+    margin-left: 25px;
+  }
+  h1 {
+    font-size: 18px;
+    color: #4a4945;
+    display: inline-block;
+    padding: 8px 0;
+    margin-left: 110px;
+  }
+}
+//帮贡样式
+.box {
+  background: rgb(245, 247, 249);
+  .notice {
+    width: 90%;
+    margin: 0 auto;
+    h1 {
+      font-size: 18px;
+      text-align: center;
+      letter-spacing: 2px;
+      padding: 16px;
+    }
+    p {
+      padding: 5px 16px 16px;
+      font-size: 14px;
+      line-height: 1.75em;
+      letter-spacing: 2px;
+      font-weight: 540;
+    }
+    .xia {
+      text-decoration: underline;
+    }
+    .lan {
+      color: #551a8b;
+      font-size: 16px;
+    }
+  }
+}
+//达人申请
+.hezi {
+  width: 90%;
+  margin: 0 auto;
+  h1 {
+    font-size: 18px;
+    text-align: center;
+    letter-spacing: 2px;
+    padding: 16px;
+  }
+  p {
+    padding: 5px 16px 16px;
+    font-size: 14px;
+    line-height: 1.75em;
+    letter-spacing: 2px;
+    font-weight: 540;
+  }
+  .jieshao {
+    text-align: center;
+    font-size: 14px;
+    color: #999999;
+  }
+  .anniu {
+    width: 100%;
+    height: 40px;
+    background: #efedeb;
+    border: 0;
+    font-size: 18px;
+  }
+}
+//课堂
+.course {
+  width: 90%;
+  margin: 0 auto;
+  font-size: 14px;
+  text-align: center;
+
+  .tiyan {
+    width: 80%;
+    height: 88px;
+    margin: 0 auto;
+  }
+  .tiyan1 {
+    width: 100%;
+  }
+}
+.ad {
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  .tiyan2 {
+    width: 100%;
+  }
+}
+//活动
+.activity {
+  width: 90%;
+  margin: 0 auto;
+  .activity1 {
+    width: 100%;
+  }
+  .activity3 {
+    padding: 10px 15px 20px 15px;
+  }
+  .top {
+    @include flex($hov: space-between, $col: center);
+    font-size: 14px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+  .text {
+    width: 50%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .activity2 {
+    font-size: 10px;
+    color: #999999;
+    margin-top: 10px;
+    line-height: 10px;
+  }
+}
+//活动内详情
+.hezi1 {
+  width: 100%;
+  margin: 0 auto;
+  overflow: hidden;
+}

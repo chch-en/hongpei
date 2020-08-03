@@ -1,3 +1,4 @@
+
 import Login from "../pages/Login";
 import Index from "../pages/Index";
 import Study from "../pages/Study";
@@ -6,7 +7,6 @@ import QuestionAndAnswer from "../pages/QuestionAndAnswer";
 import My from "../pages/My";
 import School from "../pages/School"
 import Skill from "../pages/Skill"
-import Classify from "../pages/Classify"
 import Novice from "../pages/Novice"
 import University from "../pages/university"
 import CourseOne from "../componets/CourseOne"
@@ -14,7 +14,11 @@ import CourseTwo from "../componets/CourseTwo"
 import CourseThree from "../componets/CourseThree"
 import Newbie from "../pages/skill/Newbie"
 import Register from "../pages/Register"
-import Demo from "../pages/Demo"
+import Demo from "../pages/skill/Demo"
+import RecipesClassify from "../pages/classify/RecipesClassify"
+import ClassifyDetail from "../pages/classify/ClassifyDetail"
+import Recipe from "../pages/classify/Recipe"
+
 
 export default [
   {
@@ -27,16 +31,26 @@ export default [
   },
   {
     path: "/newbie/:id",
-    component: Newbie,
+    component: Newbie
+  },
+  {
+    path: "/classify",
+    component: RecipesClassify
   },
   {
     path: "/demo",
     component: Demo
   },
-  {
-    path: "/classify",
-    component: Classify,
+
+  { 
+    path: "/classifyDetail/:name",
+    component: ClassifyDetail
   },
+  {
+    path: "/recipe/:id",
+    component: Recipe
+  },
+
   {
     path: "/novice",
     component: Novice,

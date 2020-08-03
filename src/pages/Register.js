@@ -3,6 +3,7 @@ import { withRouter } from "react-router-dom"
 import { Form, Input, Button, Checkbox, notification } from 'antd';
 import { register } from "../api/index"
 import aaa from "../scss/login.module.scss"
+import Top from "../componets/Top"
 
 const layout = {
   labelCol: { span: 8 },
@@ -23,14 +24,14 @@ const openNotification = () => {
 }
 
 class Register extends Component {
-  constructor(){
+  constructor() {
     super()
 
   }
   onFinish = values => {
     console.log(values)
     register(values).then((res) => {
-      if (typeof(res)=== "string") {
+      if (typeof (res) === "string") {
         alert(res)
       } else {
         openNotification()
@@ -38,7 +39,6 @@ class Register extends Component {
       }
     })
     // console.log('Success:', values);  //获取输入的信息   点击之后获取
-
   };
 
   onFinishFailed = errorInfo => {
@@ -49,6 +49,7 @@ class Register extends Component {
     return (
 
       <div className={aaa.bogy}>
+        <Top {...this.props} />
         <div className={aaa.login}>
           <Form
             className="form"
@@ -73,8 +74,8 @@ class Register extends Component {
               <Input.Password />
             </Form.Item >
 
-              <Button type="primary" htmlType="submit" >
-                注册
+            <Button type="primary" htmlType="submit" >
+              注册
           </Button>
 
           </Form>

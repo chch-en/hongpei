@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import aaa from "../scss/demo.module.scss"
-import { demo } from "../api/index"
+import aaa from "../../scss/demo.module.scss"
+import { demo } from "../../api/index"
 
 class Demo extends Component {
   constructor() {
@@ -10,7 +10,7 @@ class Demo extends Component {
     }
   }
 componentDidMount() {
-  demo().then((res) => {
+  demo().then((res) => { 
     console.log(res)
     this.setState({
       list: res.data.data.content
