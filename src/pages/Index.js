@@ -9,7 +9,7 @@ export default class Index extends Component {
     }
     componentDidMount() {
         const { childrenaa } = this.props
-        console.log(this.props, childrenaa)
+        // console.log(this.props, childrenaa)
     }
     render() {
         const { childrenaa } = this.props

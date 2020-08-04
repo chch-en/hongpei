@@ -4,9 +4,23 @@ import Study from "../pages/Study";
 import Show from "../pages/Show";
 import QuestionAndAnswer from "../pages/QuestionAndAnswer";
 import My from "../pages/My";
+import School from "../pages/School"
+import Rcamor from "../pages/Rcamor"
 
 
 export default [
+    {
+        path: "/school",
+        exact: true,
+        component: School,
+    },
+    {
+        path: "/rcamor/:id",
+        exact: true,
+        component: Rcamor,
+    },
+
+
     {
         path: "/login",
         component: Login

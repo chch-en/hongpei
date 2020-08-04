@@ -6,6 +6,8 @@
     "axios": "^0.19.2",
     "cra-template": "1.0.3",
     "mockjs": "^1.1.0",
+    "node-sass": "^4.14.1",
+    "qnui": "^0.6.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-redux": "^7.2.0",
@@ -15,7 +17,8 @@
     "redux": "^4.0.5",
     "redux-thunk": "^2.3.0",
     "sass": "^1.26.10",
-    "sass-loader": "^9.0.2"
+    "sass-loader": "^9.0.2",
+    "swiper": "^6.0.4"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -37,5 +40,10 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "node-loader": "^1.0.0",
+    "node-sass": "^4.14.1",
+    "sass-loader": "^9.0.2"
   }
 }
