@@ -15,6 +15,10 @@ import CourseThree from "../componets/CourseThree"
 import RecipesClassify from "../pages/classify/RecipesClassify"
 import ClassifyDetail from "../pages/classify/ClassifyDetail"
 import Recipe from "../pages/classify/Recipe"
+import AllDish from "../pages/classify/AllDish"
+import DishDetail from "../pages/classify/DishDetail"
+import Client from "../pages/classify/Client"
+
 
 
 export default [
@@ -37,6 +41,18 @@ export default [
   {
     path: "/recipe/:id",
     component: Recipe
+  },
+  {
+    path: "/allDish/:id",
+    component: AllDish
+  },
+  {
+    path: "/dishDetail/:id",
+    component: DishDetail
+  },
+  {
+    path: "/client/:id",
+    component: Client
   },
 
   {

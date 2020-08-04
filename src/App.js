@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import router from "./Router"
 // import "./scss/style.scss"
 import "./scss/reset.scss"
-import "zent/css/index.css"
+// import "zent/css/index.css"
 import 'swiper/swiper-bundle.min.css'
 
 function App() {

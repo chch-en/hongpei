@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react';
-import classify from "../../scss/classify.module.scss"
+import classify from "../../scss/classify/classify.module.scss"
 import axios from "axios"
 import { withRouter } from 'react-router-dom';
 class Recipes_classify extends Component {
@@ -19,21 +19,21 @@ class Recipes_classify extends Component {
     get_alllist = () => {
         //获取页面除了推荐之外的所有数据
         axios.get("https://api.hongbeibang.com/classify/get")
+            // axios.get("http://47.105.216.247/cureSystem-1.0-SNAPSHOT/recipe/getAllRecipe.action")
             .then((res) => {
-                // console.log(res)
-                //推荐的那个li拿不到数据，自己定义添加到数组中，再循环遍历
+                // 推荐的那个li拿不到数据，自己定义添加到数组中，再循环遍历
                 res.data.data.classify.unshift({ name: "推荐", list: [] })
                 this.setState({
                     list: res.data.data.classify
                 }, () => {
-                    // console.log(this.state.list)
+                    console.log(this.state.list)
                 })
             }
             )
     }
     //获取推荐数据，推荐数据部分
     get_Recommond = () => {
-        axios.get("https://api.hongbeibang.com/classify/getRecommend")
+        axios.get("https://api.hongbeibang.com/classify/getRecommend/")
             .then((res) => {
                 // console.log(res.data.data)
                 res.data.data.map((item) => {
@@ -66,18 +66,33 @@ class Recipes_classify extends Component {
     toClassifyDetail = (name) => {
         this.props.history.push(`/classifyDetail/${name}`)
     }
+    //点击返回上一页
+    back = () => {
+        this.props.history.go(-1)
+    }
     render() {
         let { list, show_list, is_active } = this.state
 
 
         return (
             <Fragment>
+                <div className={classify.sousuo}>
+                    <div className={classify.tou} onClick={this.back.bind(this)}>
+                        <img src={require("../../imgs/left.png")} alt="" />
+                    </div>
+                    <div className={classify.inp}>
+                        搜索食谱，食材，烘焙/家常菜...
+                    </div>
+                </div>
+                <div className={classify.kong}></div>
                 <div className={classify.content}>
-                    <ul className={classify.ul_left}>
+                    <div className={classify.scrollel}>
+                        <ul className={classify.ul_left}>
 
-                        {list.map((item, index) => <li className={is_active === index ? classify.active : ""}
-                            key={index} onClick={this.click_Item.bind(this, index)}>{item.name}</li>)}
-                    </ul>
+                            {list.map((item, index) => <li className={is_active === index ? classify.active : ""}
+                                key={index} onClick={this.click_Item.bind(this, index)}>{item.name}</li>)}
+                        </ul>
+                    </div>
                     <div className={classify.right}>
                         {
                             show_list.map((item, index) => {
@@ -110,4 +125,3 @@ class Recipes_classify extends Component {
 }
 
 export default withRouter(Recipes_classify);
-// export default ClassifyDetail;

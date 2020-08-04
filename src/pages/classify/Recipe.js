@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react'
 import axios from "axios"
-import recipe from "../../scss/recipe.module.scss"
+import recipe from "../../scss/classify/recipe.module.scss"
 import { withRouter } from 'react-router-dom';
 
 
@@ -19,17 +19,20 @@ class Recipe extends Component {
             pageIndex: 0,//评论接口发送请求需要的参数
             pageSize: 10,
             list_comment: [],//评论数据列表
-            comment_count: 0//评论数量
+            comment_count: 0,//评论数量
+            contentId: '',//定义点击更多作业需要的参数
+            classifyName: "",//定义点击更多食谱需要的参数
         }
     }
     componentDidMount() {
-        this.get_Detail()
+        this.get_Detail(this.props.match.params.id, this.state.quantity)
         this.get_lesson()
         this.get_comment()
     }
     //页面跳转拿到详情数据
-    get_Detail = () => {
-        axios.get(`https://api.hongbeibang.com/recipe/get?contentId=${this.props.match.params.id}&quantity=${this.state.quantity}`)
+    //把接口中的两个参数，提到形参这，调用的时候传入实参
+    get_Detail = (id, quantity) => {
+        axios.get(`https://api.hongbeibang.com/recipe/get?contentId=${id}&quantity=${quantity}`)
             .then((res) => {
                 this.get_authorCook(res.data.data.recipe.clientId) //作者的食谱是在调用完详情数据里拿到的，这里需要拿到id
                 this.setState({
@@ -37,13 +40,26 @@ class Recipe extends Component {
                     list_foods: res.data.data.recipe.material,
                     list_step: res.data.data.recipe.step,
                     list_dish: res.data.data.recipe.dish.data,
-                    list_recommend: res.data.data.recipe.recipe
+                    list_recommend: res.data.data.recipe.recipe,
+                    classifyName: res.data.data.recipe.classify[2].classifyName,
+                    contentId: res.data.data.recipe.contentId
 
                 }, () => {
-                    console.log(this.state.list_detail)
+                    console.log(this.state.list_recommend)
                 })
             })
     }
+
+    //点击跳转更多作业页面
+    to_alldish = (id) => {
+        this.props.history.push(`/allDish/${id}`)
+    }
+
+    //点击食谱推荐更多跳转
+    to_classifyDetail = (name) => {
+        this.props.history.push(`/classifyDetail/${name}`)
+    }
+
     //页面跳转拿到作者食谱，这里是另一个接口
 
     get_authorCook = (id) => {
@@ -102,7 +118,7 @@ class Recipe extends Component {
         this.setState({
             quantity: num
         }, () => {
-            this.get_Detail()
+            this.get_Detail(this.props.match.params.id, this.state.quantity)
         })
     }
     //增加数量
@@ -110,15 +126,35 @@ class Recipe extends Component {
         this.setState({
             quantity: this.state.quantity + 1
         }, () => {
-            this.get_Detail()
+            this.get_Detail(this.props.match.params.id, this.state.quantity)
         })
     }
-
+    //点击作业图片跳转到作业页面
+    to_dishdetail = (id) => {
+        this.props.history.push(`/dishDetail/${id}`)
+    }
+    //点击返回上一页
+    back = () => {
+        this.props.history.go(-1)
+    }
+    //点击推荐食谱，只是变换contentid 所以在点击事件中拿到contentid，传到方法当中
+    get_newDetail = (id, quantity) => {
+        //每次中加载需要重置 数量quantity
+        this.setState({
+            quantity: 1
+        })
+        this.props.history.push(`/recipe/${id}`) //这个相当于重新跳转了一遍这个页面，相当于刷新，但是id 改变了
+        this.get_Detail(id, quantity) //调用接口，重新渲染
+        window.scrollTo(0, 0) //重新加载需返回顶部
+    }
     render() {
         let { list_detail, list_foods, list_step, list_dish,
-            list_recommend, list_authorcook, list_lesson, list_comment, comment_count, quantity } = this.state
+            list_recommend, list_authorcook, list_lesson, list_comment, comment_count, classifyName, contentId, quantity } = this.state
         return (
             <Fragment>
+                <div className={recipe.sousuo} onClick={this.back.bind(this)}>
+                    <img src={require("../../imgs/left.png")} alt="" />
+                </div>
                 <div className={recipe.imgbox}>
                     <img src={list_detail.coverImage} alt="" />
                 </div>
@@ -176,11 +212,11 @@ class Recipe extends Component {
                     <div className={list_dish ? recipe.work : recipe.work1}>
                         <h2>
                             <span className={recipe.worktitle}> 作业</span>
-                            <span className={recipe.span1}>查看全部</span>
+                            <span className={recipe.span1} onClick={this.to_alldish.bind(this, contentId)}>查看全部</span>
                         </h2>
                         <div className={recipe.workcontent}>
                             {list_dish.map((item, index) => {
-                                return <div key={index} className={recipe.work_author}>
+                                return <div key={index} className={recipe.work_author} onClick={this.to_dishdetail.bind(this, item.contentId)}>
                                     <img className={recipe.img1} src={item.image[0]} alt="" />
                                     <div className={recipe.work_name}>
                                         <img className={recipe.img2} src={item.clientImage} alt="" />
@@ -203,12 +239,12 @@ class Recipe extends Component {
                     <div className={recipe.recommend}>
                         <h2>
                             <span className={recipe.worktitle}> 食谱推荐</span>
-                            <span className={recipe.span1}>查看全部</span>
+                            <span className={recipe.span1} onClick={this.to_classifyDetail.bind(this, classifyName)}>查看全部</span>
                         </h2>
                         <div className={recipe.reco_list}>
                             {
                                 list_recommend.map((item, index) => {
-                                    return <div key={index} className={recipe.reco_img}>
+                                    return <div key={index} className={recipe.reco_img} onClick={this.get_newDetail.bind(this, item.contentId, item.quantity)}>
                                         <img src={item.coverImage} alt="" />
                                         <p>{item.coverTitle}</p>
                                     </div>
@@ -264,6 +300,7 @@ class Recipe extends Component {
                             <div>评论数：{comment_count}</div>
                         </div>
                         <div className={recipe.comment_text}>
+                            <div className={list_comment.length === 0 ? recipe.kong : recipe.none}>快来发表你的评论吧</div>
                             {list_comment.map((item, index) => {
                                 return <div key={index} className={recipe.comment_item}>
                                     <div className={recipe.imgbox_left}>
@@ -285,17 +322,11 @@ class Recipe extends Component {
                                             }
                                         </div>
                                     </div>
-
-
-
                                 </div>
                             })}
-
                         </div>
                     </div>
-
                 </div>
-
 
             </Fragment>
         )
