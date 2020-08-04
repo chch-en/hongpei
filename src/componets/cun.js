@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { NavLink } from "react-router-dom"
 import MyRouter from "../mock/MyRouter"
 import Head from "../scss/Head.module.scss"
 import Axios from 'axios'
@@ -179,23 +178,6 @@ export default class Index extends Component {
 
                     </ul>
                 </div>
-                {/* <nav>
-                    <NavLink
-                        to={"/"}
-                        exact
-                    >{"学烘培"}</NavLink>
-
-                    <NavLink
-                        to={"/show"}
-                    >{"烘培圈"}</NavLink>
-
-                    <NavLink
-                        to={"/questionAndAnswer"}
-                    >{"问答"}</NavLink>
-                    <NavLink
-                        to={"/my"}
-                    >{"小窝"}</NavLink>
-                </nav> */}
 
                 <MyRouter router={childrenaa}></MyRouter>
             </div>

@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react'
 import axios from 'axios'
-import classifyDetail from '../../scss/classifyDetail.module.scss'
+import classifyDetail from '../../scss/classify/classifyDetail.module.scss'
 import { withRouter } from 'react-router-dom'
 
 class ClassifyDetail extends Component {
@@ -26,6 +26,7 @@ class ClassifyDetail extends Component {
       pageIndex: 0, //定义发送请求时的相关参数
       isActive: '',
       show_list: [], //定义展示用的数组
+      showEmpty: false,
     }
   }
   componentDidMount() {
@@ -55,7 +56,7 @@ class ClassifyDetail extends Component {
               show_list: res.data.data.search.list.recipe.data,
             },
             () => {
-              console.log(this.state.show_list)
+              // console.log(this.state.show_list)
             }
           )
         } else {
@@ -108,16 +109,78 @@ class ClassifyDetail extends Component {
       )
     }
   }
+  //搜索框change事件
+  searchText = (e) => {
+    this.setState(
+      {
+        searchKey: e.target.value,
+        showEmpty: false,
+        show_list: [],
+      },
+      () => {
+        //当搜索框的value 发生改变，请求数据， 建议给个延时
+        setTimeout(() => {
+          if (this.state.searchKey) {
+            this.get_all()
+          } else {
+            this.setState({
+              show_list: [],
+            })
+          }
+        }, 1500)
+      }
+    )
+  }
+  //清空搜索框
+  clearSearch() {
+    this.setState(
+      {
+        searchKey: '',
+        showEmpty: true,
+      },
+      () => {}
+    )
+  }
   //点击跳转到下个页面
   toItem = (id) => {
     this.props.history.push(`/recipe/${id}`)
   }
+  //点击返回上一页
+  back = () => {
+    this.props.history.go(-1)
+  }
 
   render() {
-    let { tab, show_list, isActive } = this.state
+    let style = {
+      display: 'none',
+    }
+    let style2 = {
+      display: 'block',
+    }
+    let { tab, show_list, isActive, searchKey } = this.state
     return (
       <Fragment>
         <div>
+          <div className={classifyDetail.sousuo}>
+            <div className={classifyDetail.tou} onClick={this.back.bind(this)}>
+              <img src={require('../../imgs/left.png')} alt="" />
+            </div>
+            <div className={classifyDetail.inp}>
+              {/* 搜索食谱，食材，烘焙/家常菜... */}
+              <img
+                src={require('../../imgs/close.png')}
+                alt=""
+                onClick={this.clearSearch.bind(this)}
+                style={this.state.showEmpty ? style : style2}
+              />
+              <input
+                type="text"
+                placeholder="搜索食谱"
+                value={searchKey}
+                onChange={this.searchText.bind(this)}
+              />
+            </div>
+          </div>
           <ul className={classifyDetail.nav}>
             {tab.map((item) => (
               <li
@@ -129,6 +192,34 @@ class ClassifyDetail extends Component {
               </li>
             ))}
           </ul>
+          <div
+            ref="scroll"
+            onScroll={this.get_onScroll}
+            className={classifyDetail.scrollcontent}
+          >
+            {show_list.map((item, index) => {
+              return (
+                <div
+                  className={classifyDetail.content}
+                  key={index}
+                  onClick={this.toItem.bind(this, item.contentId)}
+                >
+                  <div className={classifyDetail.imgbox}>
+                    <img src={item.coverImage} alt="" />
+                  </div>
+                  <div className={classifyDetail.text}>
+                    <h2>{item.coverTitle}</h2>
+                    <p className={classifyDetail.p1}>{item.clientName}</p>
+                    <p className={classifyDetail.p2}>
+                      <span>{item.collectNum}收藏</span>
+                      <span>{item.dishNum}人做过</span>
+                    </p>
+                  </div>
+                </div>
+              )
+            })}
+          </div>
+
           <div
             ref="scroll"
             onScroll={this.get_onScroll}

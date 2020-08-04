@@ -1,15 +1,20 @@
-import React from 'react'
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+import React, { Component } from 'react'
+import { withRouter, Route, Switch } from 'react-router-dom'
 import router from './Router'
-// import "./scss/style.scss"
 import './scss/reset.scss'
-import 'zent/css/index.css'
-import 'swiper/swiper-bundle.min.css'
+import './scss/style.scss'
 import 'antd/dist/antd.css'
-function App() {
-  return (
-    <div className="App">
-      <Router>
+import 'swiper/swiper-bundle.min.css'
+class App extends Component {
+  constructor(props, context) {
+    super(props, context)
+    this.props.history.listen((props) => {
+      console.log(props)
+    })
+  }
+  render() {
+    return (
+      <div className="App">
         <Switch>
           {router.map((v) => (
             <Route
@@ -19,9 +24,9 @@ function App() {
             ></Route>
           ))}
         </Switch>
-      </Router>
-    </div>
-  )
+      </div>
+    )
+  }
 }
-// withrouter
-export default App
+
+export default withRouter(App)

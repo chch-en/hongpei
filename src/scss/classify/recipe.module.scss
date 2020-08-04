@@ -5,7 +5,24 @@
     list-style: none;
     text-decoration: none;
 }
+.sousuo{
+    height: 44px;
+    display: flex;
+    align-items: center;
+    padding-left: 30px;
+    position: fixed;
+    left: 0;
+    top: 0;
+    background: #fff;
+    width: 100%;
+    z-index: 10;
+    img{
+        width: 27px;
+        height: 27px;
+    }
+}
 .imgbox{
+    margin-top: 44px;
     width: 100%;
     height: 287.5px;
     img{
@@ -352,7 +369,157 @@
                 }
             }
         }
-      
+      .lesson{
+          display: flex;
+          flex-wrap: nowrap;
+          justify-content: space-between;
+          overflow: scroll;
+          .lesson_detail{
+              width: 160px;
+              margin-right: 10px;
+              position: relative;
+
+              img{
+                  width: 160px;
+                  height: 225px;
+                  margin-bottom: 10px;
+                  border-radius: 4px;
+
+              }
+              .study{
+                  padding: 2px 4px;
+                  color: #4A4945;
+                  background-color: #fff;
+                  border-radius: 4px;
+                  font-size: 11px;
+                  position: absolute;
+                  top: 200px;
+                  left: 15px;
+                  z-index: 5;
+              }
+              p{
+                color: #4A4945;
+                font-weight: bold;
+                font-size: 15px;
+                line-height: 20.25px;
+                display: -webkit-box;
+                -webkit-line-clamp: 2;
+                -webkit-box-orient: vertical;
+                overflow: hidden;
+                word-break: break-all;
+                text-overflow: ellipsis;
+                white-space: normal;
+                margin-bottom: 10px;
+              }
+          }
+
+      }
+     
+    }
+    .comment{
+            background: #fff;
+        h2{
+            padding: 5px 15px;
+        }
+        .number{
+            padding: 5px 15px;
+            display: flex;
+            width: 100%;
+            align-items: center;
+            box-sizing: border-box;
+            height: 54px;
+            div{
+                flex: 1;
+                text-align: center;
+                color: #676767;
+                font-size: 11px;
+                line-height: 15px;
+            }
+            
+        }
+        .comment_text{
+            border-top: 1px solid #F5F7F9;
+            background: #fff;
+            padding: 0 15px;
+            padding-top: 10px;
+            .kong{
+                height: 190px;
+                line-height: 190px;
+                text-align: center;
+                font-size: 14px;
+                color: #999999;
+                background-color: #FFFFFF;
+            }
+            .none{
+                display: none;
+            }
+          
+            .comment_item{
+                display: flex;
+                justify-content: left;
+                margin-bottom: 15px;
+                .imgbox_left{
+                    width: 33px;
+                     margin-right: 15px;
+                    img{
+                        width: 33px;
+                        height: 33px;
+                        border-radius: 50%;
+                    }
+                }
+                .div_right{
+                    flex: 1;
+                        .name1{
+                            font-size: 13px;
+                            color: #4A4945;
+                            line-height: 18.5px;
+                            white-space: nowrap;
+                            margin-bottom: 5px;
+                        }
+                        .time1{
+                            font-size: 11px;
+                            line-height: 15px;
+                            color: #999;
+                        }
+                        p{
+                            text-align: justify;
+                            color: #4A4945;
+                            margin-top: 10px;
+                            margin-right: 15px;
+                            font-size: 15px;
+                            line-height: 21px;
+                        }
+                        .reply{
+                            box-sizing: border-box;
+                            background-color: #F5F7F9;
+                            letter-spacing: 0.5px;
+                            overflow: hidden;
+                            margin-top: 10px;
+                            zoom: 1;
+                            padding:5px 10px 10px 10px;
+                            .reply_item{
+                                color: #999999;
+                                text-align: left;
+                                font-size: 13px;
+                                line-height: 18.5px;
+                                width: 100%;
+                                padding: 5px;
+                                span{
+                                    color: #313131;
+                                    font-size: 13px;
+                                }
+                            }
+                            
+                        }
+                        .reply1{
+                            display: none;
+                        }
+                }
+               
+            }
+
+        }
+        
     }
 }
 .work1{
