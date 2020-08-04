@@ -8,7 +8,6 @@ export default class Novice extends Component {
             goodsList: [],
             jobList: [],
             shouList: {}
-
         }
     }
     componentDidMount() {
@@ -17,9 +16,6 @@ export default class Novice extends Component {
         this.get_Shou()
         const { childrenaa } = this.props
         console.log(childrenaa)
-
-
-
     }
     // 新手教程首页
     get_Shou = () => {
@@ -38,7 +34,7 @@ export default class Novice extends Component {
                 goodsList: res.data.data
             })
         })
-    }
+    } 
     // 作业目录
     get_Job = () => {
         Axios.get("https://api.hongbeibang.com/dish/getOutstandingCourseContent?pageIndex=0&pageSize=10&educationCourseId=10533").then((res) => {

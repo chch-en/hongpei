@@ -1,8 +1,8 @@
+
 import Login from "../pages/Login";
 import Index from "../pages/Index";
 import Study from "../pages/Study";
-import Show from "../pages/baking/Show";
-import Swiper from "../pages/Swiper";
+import Show from "../pages/Show";
 import QuestionAndAnswer from "../pages/QuestionAndAnswer";
 import My from "../pages/My";
 import School from "../pages/School"
@@ -12,6 +12,9 @@ import University from "../pages/university"
 import CourseOne from "../componets/CourseOne"
 import CourseTwo from "../componets/CourseTwo"
 import CourseThree from "../componets/CourseThree"
+import Newbie from "../pages/skill/Newbie"
+import Register from "../pages/Register"
+import Demo from "../pages/skill/Demo"
 import RecipesClassify from "../pages/classify/RecipesClassify"
 import ClassifyDetail from "../pages/classify/ClassifyDetail"
 import Recipe from "../pages/classify/Recipe"
@@ -31,9 +34,18 @@ export default [
     component: Skill
   },
   {
+    path: "/newbie/:id",
+    component: Newbie
+  },
+  {
     path: "/classify",
     component: RecipesClassify
   },
+  {
+    path: "/demo",
+    component: Demo
+  },
+
   {
     path: "/classifyDetail/:name",
     component: ClassifyDetail
@@ -82,6 +94,10 @@ export default [
     component: Login
   },
   {
+    path: "/register",
+    component: Register
+  },
+  {
     path: "/",
     component: Index,
     childrens: [
@@ -90,7 +106,8 @@ export default [
         path: "/show",
         exact: true,
         component: Show,
-      }, {
+      },
+      {
         path: "/questionAndAnswer",
         exact: true,
         component: QuestionAndAnswer,

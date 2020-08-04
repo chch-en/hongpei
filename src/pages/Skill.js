@@ -1,13 +1,15 @@
+// 首页视频学烫页面   skill 文件夹下为子路径  
 import React, { Component } from 'react'
 import { withRouter} from "react-router-dom"
 import skill from "../scss/skill.module.scss"
 import { baike } from "../api"
-
+import Top from "../componets/Top"
 export default withRouter(class Skill extends Component {
   constructor() {
     super()
     this.state = {
       list: [],
+      showElem:true,
     }
   }
 
@@ -22,25 +24,22 @@ export default withRouter(class Skill extends Component {
 
   // 点击跳转路由传入id
   Newbie = (id) => {
-    console.log(id)
-    console.log(this.props)
-    this.props.history.push(`/newbie/${id}`)
+    this.props.history.push(`/newbie/${id}`) 
   }
-
   render () {
-    // console.log(this.props)
+    console.log(this.props)
     let list = this.state.list.slice(0, 8)
     // console.log(list)
     return (
 
       <div className={skill.content}>
-        <div className={skill.head}>
+        {/* <div className={skill.head}>
           <img src="https://image.hongbeibang.com/FoTuxKG5pqYKuAsT8BjrflkAxEpj?48X48&imageView2/1/w/48/h/48" alt="" onClick={()=>{
             this.props.history.push("/")
 
           }}/>
-          {/* <h1></h1> */}
-        </div>
+        </div> */}
+        <Top {...this.props}/>
         <div className={skill.type_mian}>
           <ul>
 
@@ -59,10 +58,18 @@ export default withRouter(class Skill extends Component {
             ))}
           </ul>
         </div>
-
-        <div className={skill.mao}>
+        
+     { this.state.showElem?(
+        <div className={skill.mao} >
           <img src="https://image.hongbeibang.com/FqrNwXey8HDGxtROft8FVPUMPEwE" alt="" />
+          <p className={skill.nall} onClick={ ()=>{
+             this.setState({
+               showElem:false
+             })
+          }}>X</p>
         </div>
+        ):null}
+
       </div>
 
     )

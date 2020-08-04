@@ -11,7 +11,7 @@ class Recipes_classify extends Component {
             recommend_list: [],//数据结构不同，专门定义推荐数组
             is_active: 0
         }
-    }
+    } 98
     componentDidMount() {
         this.get_alllist()
         this.get_Recommond()
@@ -60,7 +60,6 @@ class Recipes_classify extends Component {
             // console.log(this.state.show_list)
         })
 
-
     }
     //点击跳转详情页
     toClassifyDetail = (name) => {
@@ -71,6 +70,7 @@ class Recipes_classify extends Component {
         this.props.history.go(-1)
     }
     render() {
+
         let { list, show_list, is_active } = this.state
 
 
