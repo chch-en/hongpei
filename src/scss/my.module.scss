@@ -1,0 +1,96 @@
+@import './mixin.scss';
+@import './config.scss';
+.top {
+  @include flex($hov: space-between, $col: center);
+
+  .image1 {
+    @include wH($w: 78px, $h: 78px);
+    border-radius: 50%;
+    margin-left: 25px;
+  }
+  .sex {
+    margin-right: 180px;
+  }
+  .name {
+    font-size: 20px;
+  }
+  .image2 {
+    @include wH($w: 15px, $h: 15px);
+    margin: 0 5px;
+  }
+  .image3 {
+    @include wH($w: 25px, $h: 25px);
+  }
+  .image4 {
+    @include wH($w: 25px, $h: 25px);
+  }
+  .math {
+    font-size: 12px;
+    color: #999;
+    @include flex($hov: space-between, $col: center);
+  }
+}
+.xinxi {
+  @include flex($hov: space-between, $col: center);
+  width: 80%;
+  margin: 0 auto;
+  text-align: center;
+  border-bottom: 1px solid rgb(231, 226, 229);
+  li:nth-of-type(3n + 1) {
+    margin-bottom: 5px;
+    margin-left: 75px;
+    padding-right: 20px;
+    border-right: 1px solid rgb(231, 226, 229);
+  }
+  li:nth-of-type(3n + 2) {
+    margin-bottom: 5px;
+    padding-right: 20px;
+    border-right: 1px solid rgb(231, 226, 229);
+  }
+  li:nth-of-type(3n + 3) {
+    margin-right: 90px;
+    margin-bottom: 5px;
+  }
+}
+.works {
+  @include flex($hov: space-between, $col: center);
+  text-align: center;
+  width: 80%;
+  margin: 0 auto;
+  margin-top: 10px;
+  img {
+    width: 40px;
+    height: 40px;
+  }
+}
+.hang {
+  margin-top: 10px;
+  height: 10px;
+  border: 0;
+  background: rgb(245, 247, 249);
+}
+.activity {
+  font-size: 14px;
+  color: #4a4945;
+  p {
+    @include flex($hov: space-between, $col: center);
+    margin-bottom: 0;
+  }
+  div {
+    margin-left: 10px;
+    @include flex($hov: space-between, $col: center);
+  }
+  li {
+    height: 30px;
+    @include flex($hov: space-between, $col: center);
+    width: 80%;
+    margin: 0 auto;
+    padding: 30px 0;
+    line-height: 30px;
+    border-bottom: 1px solid rgb(231, 226, 229);
+  }
+  img {
+    @include wH($w: 23px, $h: 23px);
+    margin-right: 5px;
+  }
+}

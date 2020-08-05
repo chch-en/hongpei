@@ -7,7 +7,7 @@ import Rcamor from "../pages/Rcamor"
 
 export default [
     {
-        path: "/skill",
+        path: "/Skill",
         component: Skill
     },
     {

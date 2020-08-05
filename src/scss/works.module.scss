@@ -1,0 +1,44 @@
+@import './mixin.scss';
+@import './config.scss';
+//头部样式
+.haha {
+  img {
+    @include wH($w: 27px, $h: 25px);
+    margin-top: 5px;
+    margin-left: 25px;
+  }
+  .top {
+    font-size: 16px;
+    font-weight: bold;
+    color: #4a4945;
+    display: inline-block;
+    padding: 8px 0;
+    margin: 0 10px;
+  }
+  .top1 {
+    display: inline-block;
+    margin-left: 50px;
+    margin-top: -5px;
+  }
+}
+//内容
+.content {
+  background: rgb(245, 247, 249);
+  text-align: center;
+  margin-top: 10px;
+  font-size: 12px;
+  color: #999999;
+}
+//发布
+.shangchuan {
+  width: 50px;
+  font-size: 14px;
+  height: 30px;
+  color: #e98b71;
+  border: 1px solid #e98b71;
+  background: white;
+  border-radius: 4px;
+  position: fixed;
+  right: 25px;
+  top: 10px;
+}

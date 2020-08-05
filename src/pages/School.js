@@ -85,7 +85,7 @@ class School extends Component {
     }
 
     toRcamor = (id) => {
-        console.log(id)
+        console.log(id, this, "11")
         this.props.history.push(`/rcamor/${id}`)
     }
 
