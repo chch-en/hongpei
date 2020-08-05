@@ -19,7 +19,8 @@ class AllDish extends Component {
                 width: "100%",
                 height: "400px",
                 marginTop: '130px'
-            }
+            },
+            isloading: false//加载数据时的效果
         }
 
     }
@@ -41,7 +42,9 @@ class AllDish extends Component {
                     this.setState({
                         list_alldish: newArr
                     }, () => {
-                        console.log(this.state.list_alldish)
+                        this.setState({
+                            isloading: true//拿到数据之后修改为true
+                        })
                     })
                 }
 
@@ -108,7 +111,13 @@ class AllDish extends Component {
 
 
     render() {
-        let { list_alldish, style, imgs, isshow } = this.state
+        let none = {
+            display: 'none'
+        }
+        let block = {
+            display: 'block'
+        }
+        let { list_alldish, style, imgs, isshow, isloading } = this.state
         return (
             <Fragment>
                 <div className={isshow ? alldish.swiper : alldish.swiper1} onClick={this.onClose.bind(this)}>
@@ -171,7 +180,12 @@ class AllDish extends Component {
                             </div>
                         })
                     }
+                    {/* 底部的loading 判断 isloading  为true还是false 确定隐藏还是展示*/}
+                    <div className={alldish.loading} style={isloading ? block : none}>
+                        <img src={require('../../imgs/loading.png')} alt="" />
+                    </div>
                 </div>
+
             </Fragment>
         )
     }

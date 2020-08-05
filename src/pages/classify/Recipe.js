@@ -209,7 +209,7 @@ class Recipe extends Component {
                     </div>
                 </div>
                 <div className={recipe.main}>
-                    <div className={list_dish ? recipe.work : recipe.work1}>
+                    <div className={list_dish.length > 0 ? recipe.work : recipe.work1}>
                         <h2>
                             <span className={recipe.worktitle}> 作业</span>
                             <span className={recipe.span1} onClick={this.to_alldish.bind(this, contentId)}>查看全部</span>
