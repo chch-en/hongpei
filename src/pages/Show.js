@@ -241,7 +241,7 @@ export default class Show extends Component {
                   <div className={Baking_circle.box} key={i}>
                     <div className={Baking_circle.personal} onClick={() => {
 
-                      this.props.history.push(`/dishDetail/${item.clientId}`)
+                      this.props.history.push(`/dishDetail/${item.contentId}`)
                     }}>
                       <img src={item.clientImage} alt="" />
                       <div className={Baking_circle.right}>

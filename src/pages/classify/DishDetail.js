@@ -34,6 +34,7 @@ class DishDetail extends Component {
     get_detail = () => {
         axios.get(`https://api.hongbeibang.com/dish/get?contentId=${this.props.match.params.id}`)
             .then((res) => {
+                console.log(res.data.data.dish.createTime)
                 this.setState({
                     list_detail: res.data.data.dish,
                     time: res.data.data.dish.createTime,
@@ -42,6 +43,8 @@ class DishDetail extends Component {
 
                 }, () => {
                     this.setState({
+
+
                         //定义下方点击切换的tab，通过key值判断显示
                         tab: [
                             {
@@ -117,7 +120,12 @@ class DishDetail extends Component {
     }
     //点击跳转回食谱页面
     toRecipe = (id) => {
-        this.props.history.push(`/recipe/${id}`)
+        console.log(id)
+        if (id !== 0) {
+            this.props.history.push(`/recipe/${id}`)
+        } else {
+            this.props.history.push(`/`)
+        }
     }
     //点击返回上一页
     back = () => {
