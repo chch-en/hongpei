@@ -23,7 +23,7 @@
     "redux-thunk": "^2.3.0",
     "sass": "^1.26.10",
     "sass-loader": "^9.0.2",
-    "swiper": "^6.0.4",
+    "swiper": "^6.5.1",
     "zent": "^8.5.3"
   },
   "scripts": {
